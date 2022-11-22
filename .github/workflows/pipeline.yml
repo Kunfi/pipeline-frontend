@@ -2,7 +2,7 @@ name: pipeline
 run-name: ${{ github.actor }} is creating his first pipeline
 on: [push]
 jobs:
-  print-hello-world:
+  print-secret:
     runs-on: ubuntu-latest
     steps:
       - run: echo $MY_MAXIMUM_SECURITY_SECRET
