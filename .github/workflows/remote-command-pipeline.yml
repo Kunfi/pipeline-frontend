@@ -1,5 +1,5 @@
 name: Remote command
-run-name: ${{ github.actor }} is creating a remote pipeline
+run-name: ${{ github.actor }} is creating a remote command pipeline
 on: [push]
 jobs:
 
