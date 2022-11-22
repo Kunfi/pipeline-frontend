@@ -1,0 +1,14 @@
+name: Jest
+run-name: ${{ github.actor }} is creating a pipeline to jest
+on: [push]
+jobs:
+  run-jest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test using Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: yarn install
+      - run: yarn test
