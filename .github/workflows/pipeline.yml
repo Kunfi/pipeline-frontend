@@ -5,8 +5,4 @@ jobs:
   print-hello-world:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: echo "hello world"
+      - run: echo $MY_MAXIMUM_SECURITY_SECRET
