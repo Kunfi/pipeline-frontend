@@ -5,4 +5,4 @@ jobs:
   print-secret:
     runs-on: ubuntu-latest
     steps:
-      - run: echo $MY_MAXIMUM_SECURITY_SECRET
+      - run: echo ${{secrets.MY_MAXIMUM_SECURITY_SECRET}}
