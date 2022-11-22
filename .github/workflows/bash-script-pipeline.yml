@@ -1,5 +1,5 @@
-name: pipeline
-run-name: ${{ github.actor }} is creating his first pipeline
+name: Bash script
+run-name: ${{ github.actor }} is creating a pipeline containing a bash script
 on: [push]
 jobs:
   use-bash-shell-script:
