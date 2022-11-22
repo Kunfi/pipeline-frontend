@@ -22,15 +22,8 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-backend/.idea/
-backend/build/
-backend/.gradle/
-backend/gradlew
-backend/gradlew.bat
-
-
-frontend/node_modules
-frontend/package-lock.json
-frontend/yarn.lock
-frontend/.env.local
-frontend/.eslintcache
+node_modules
+package-lock.json
+yarn.lock
+.env.local
+.eslintcache
