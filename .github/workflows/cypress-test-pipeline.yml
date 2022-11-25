@@ -17,10 +17,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: build image
-        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/pipeline-backend:latest
+        run: docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/pipeline-frontend:latest
 
       - name: Push image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/pipeline-backend
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/pipeline-frontend
 
       - name: deploy on server
         uses: appleboy/ssh-action@master
@@ -31,11 +31,14 @@ jobs:
           port: 22
           script:
             docker-compose down
+            docker rmi ${{ secrets.DOCKER_USERNAME }}/pipeline-frontend --force
             docker rmi ${{ secrets.DOCKER_USERNAME }}/pipeline-backend --force
+            docker pull ${{ secrets.DOCKER_USERNAME }}/pipeline-frontend --force
             docker pull ${{ secrets.DOCKER_USERNAME }}/pipeline-backend --force
             docker-compose up -d
 
   run-cypress:
+    needs: push_to_registry
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
