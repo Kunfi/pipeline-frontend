@@ -29,15 +29,13 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: 22
-          script:
+          script: |
             docker-compose down
             docker rmi ${{ secrets.DOCKER_USERNAME }}/pipeline-frontend --force
             docker rmi ${{ secrets.DOCKER_USERNAME }}/pipeline-backend --force
             docker pull ${{ secrets.DOCKER_USERNAME }}/pipeline-frontend --force
             docker pull ${{ secrets.DOCKER_USERNAME }}/pipeline-backend --force
             docker-compose up -d
-
-      - run: yarn cypress run
 
   run-cypress:
     needs: push_to_registry
